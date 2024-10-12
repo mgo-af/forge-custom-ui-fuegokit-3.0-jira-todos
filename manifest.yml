@@ -1,0 +1,28 @@
+modules:
+  jira:issuePanel:
+    - key: forge-custom-ui-fuegokit-3-0-jira-todos-hello-world-panel
+      resource: main
+      resolver:
+        function: resolver
+      viewportSize: medium
+      title: Forge Vite Custom UI Fuegokit 3.0 Jira Todos
+      # this will break with an ESLint error, Client Side UI Kit resource (static/hello-world-vite/dist) cannot be a directory
+      # render: native
+      icon: https://user-images.githubusercontent.com/96323698/200034011-9f7a0f50-16bc-4073-b774-8b25c6787e00.svg
+  function:
+    - key: resolver
+      handler: index.handler
+resources:
+  - key: main
+    path: static/hello-world-vite-todos/dist
+permissions:
+  scopes:
+    - read:jira-work
+    - storage:app
+  content:
+    styles:
+      - "unsafe-inline"
+app:
+  runtime:
+    name: nodejs20.x
+  id: ari:cloud:ecosystem::app/3b87050a-b77d-404c-aa64-7307e2570c3c
